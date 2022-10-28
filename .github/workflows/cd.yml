@@ -1,14 +1,7 @@
-name: Express.js CI #nombre Continuos Integration Express.js
+name: Express.js CD
 on:
-
-  #  push: # correr push en rama main
-  #   branches: [ main ] 
-  pull_request: # correr pull_request en rama main
+  push:
     branches: [ main ]
-
-env:
-    POSTGRES_HOST: localhost
-    POSTGRES_PORT: 5432
 
 jobs:
   test:
@@ -25,7 +18,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
+                ports:
             - 5432:5432
     steps:
     - name: Checkout
@@ -41,3 +34,17 @@ jobs:
 
     - name: Run tests # correr test
       run: npm test
+
+
+
+    deploy:
+    needs: [test]
+    name: Wait for Deploy
+    runs-on: ubuntu-18.04
+    steps:  
+      - name: call render webhook 
+        uses: fjogeleit/http-request-action@v1 
+        with:
+          url: ${{ secrets.RENDER_HOOK }}
+          method: 'GET'
+      
