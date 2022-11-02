@@ -47,6 +47,6 @@ jobs:
       - name: call render webhook 
         uses: fjogeleit/http-request-action@v1 
         with:
-          url: ${https://api.render.com/deploy/srv-cde2kcpa6gdn98l7s250?key=k5z5TD1iCyg}
+          url: ${{ secrets.RENDER_HOOK }}
           method: 'GET'
       
