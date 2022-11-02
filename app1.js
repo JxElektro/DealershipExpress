@@ -25,12 +25,20 @@ app.listen(3001, () => {
   console.log("Server running on port 3001");
 });
 
-// close nodemon
-process.on("SIGINT", () => {
-  db.close();
-  process.exit();
+console.log(process.env.ENV);
+
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to application." });
 });
 
+//Testing database connection 
+try {
+  await db.authenticate(); //nos permite saber si esa autenticada
+  console.log('Connection has been established successfully.'); //aca valida que este funcionando (te deberia mostrar en consola que esta ok)
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 
 
 export default app;
