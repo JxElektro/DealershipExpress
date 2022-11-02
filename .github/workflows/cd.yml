@@ -3,9 +3,9 @@ on:
   push:
     branches: [ main ]
 
-    env:
-    POSTGRES_HOST: localhost
-    POSTGRES_PORT: 5432
+##    env:
+##    POSTGRES_HOST: localhost
+##    POSTGRES_PORT: 5432
 
 jobs:
   test:
@@ -22,7 +22,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-                ports:
+        ports:
             - 5432:5432
     steps:
     - name: Checkout
@@ -39,12 +39,10 @@ jobs:
     - name: Run tests # correr test
       run: npm test
 
-
-
     deploy:
     needs: [test]
     name: Wait for Deploy
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:  
       - name: call render webhook 
         uses: fjogeleit/http-request-action@v1 
