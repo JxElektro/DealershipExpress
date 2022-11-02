@@ -4,7 +4,7 @@ on:
   #  push: # correr push en rama main
   #   branches: [ main ] 
   pull_request: # correr pull_request en rama main
-    branches: [ SecondSon ]
+    branches: [ main ]
 
 ##env:
 ##    POSTGRES_HOST: localhost
