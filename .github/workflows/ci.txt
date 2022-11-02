@@ -1,14 +1,9 @@
 name: Express.js CI #nombre Continuos Integration Express.js
 on:
-
-  #  push: # correr push en rama main
-  #   branches: [ main ] 
+## push: # correr push en rama main
+## branches: [ main ] 
   pull_request: # correr pull_request en rama main
     branches: [ main ]
-
-##env:
-##    POSTGRES_HOST: localhost
-##    POSTGRES_PORT: 5432
 
 jobs:
   test:
@@ -20,6 +15,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: alcap1990
           POSTGRES_DB: postgres
+
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
