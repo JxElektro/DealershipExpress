@@ -42,7 +42,7 @@ jobs:
     deploy:
     needs: [test]
     name: Wait for Deploy
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:  
       - name: call render webhook 
         uses: fjogeleit/http-request-action@v1 
