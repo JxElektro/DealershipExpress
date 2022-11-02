@@ -42,11 +42,11 @@ jobs:
     deploy:
     needs: [test]
     name: Wait for Deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:  
       - name: call render webhook 
         uses: fjogeleit/http-request-action@v1 
         with:
-          url: ${{ secrets.RENDER_HOOK }}
+          url: ${https://api.render.com/deploy/srv-cde2kcpa6gdn98l7s250?key=k5z5TD1iCyg}
           method: 'GET'
       
