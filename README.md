@@ -1,6 +1,6 @@
 # DealershipExpress,-
 
-1.- Se crearon los archivos-
+1.- Se crearon los archivos-k
     app.js        // Principal
     database.js   // Base de datos
 
